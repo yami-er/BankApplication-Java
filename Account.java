@@ -7,7 +7,7 @@ public abstract class Account implements IBaseRate{
    protected String accountNumber;
    protected double rate;
    //constractor to set base properties and intialize the account
-   public Accout(String name,String sSN, double initDeposit){
+   public Account(String name,String sSN, double initDeposit){
        this.name= name;
        this.sSN = sSN;
        balance = initDeposit;
@@ -22,13 +22,13 @@ public abstract class Account implements IBaseRate{
     private String setAccountNumber(){
         String lastTwoOfSSN = sSN.substring(sSN.length() -2, sSN.length());
         int uniqueID = index;
-        int randomNumber =(int) Math.random() * Math.pow(10,3);
+        int randomNumber = (int) (Math.random() * Math.pow(10, 3));
         return lastTwoOfSSN + uniqueID + randomNumber ;
     }
     public void compound(){
         double accruedInterest = balance * (rate/100);
-        balance = balance + accuredInterest;
-        System.out.println("Accured Interest:" + accuredInterest);
+        balance = balance + accruedInterest;
+        System.out.println("Accrued Interest:" + accruedInterest);
         printBalance();
 
     } 
@@ -46,12 +46,12 @@ public abstract class Account implements IBaseRate{
    }
    public void transfer(String toWhere,double amount){
        balance = balance -amount;
-       System.out.println("Transfering $"+ amount);
-       printBalnce();
+       System.out.println("Transfering $"+ amount + "to" + toWhere);
+       printBalance();
    }
    public void printBalance(){
        System.out.println("your balance is now:"+ balance);
-       printBalnce();
+       printBalance();
    }
    public void showInfo(){
        System.out.println(
